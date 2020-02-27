@@ -23,6 +23,7 @@ class Resume extends Component {
 
          
         </Modal>
+        
         <p onClick={this.showModal}>Resume</p>
       </div>
     );
