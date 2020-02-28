@@ -1,33 +1,39 @@
-import React, { Component } from "react";
-import Modal from "./Modal";
-// import { Document, Page } from "react-pdf";
-// import { pdfjs } from "react-pdf";
-// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+import React, { useState, useRef } from "react";
+import useOnClickOutside from "./use-onclick-outside";
+import "./modal.css";
 
-// const resumePdf = require("./jnebe_resume.pdf");
+const resume = require("./images/jnebe_resume.png");
+const Resume = () => {
+  const ref = useRef();
+  const [isModalOpen, setModalOpen] = useState(false);
+  useOnClickOutside(ref, () => setModalOpen(false));
 
-class Resume extends Component {
-  state = { show: false };
+  return (
+    <div>
+      {isModalOpen ? (
+        <div ref={ref} className="modal-main">
+          <img className="resume_img"src={resume} alt="resume" style={{ width: "80%", margin: "70px"}} />
+        </div>
+      ) : (
+        <p onClick={() => setModalOpen(true)}>Resume</p>
+      )}
+    </div>
+  );
+};
 
-  showModal = () => {
-    this.setState({ show: true });
-  };
-  hideModal = () => {
-    this.setState({ show: false });
-  };
+// class Resume extends Component {
+//   state = { show: false };
 
-  render() {
-    return (
-      <div>
-        <Modal show={this.state.show} handleClose={this.hideModal}>
+//   showModal = () => {
+//     this.setState({ show: true });
+//   };
+//   hideModal = () => {
+//     this.setState({ show: false });
+//   };
 
-         
-        </Modal>
-        
-        <p onClick={this.showModal}>Resume</p>
-      </div>
-    );
-  }
-}
+//   render() {
+
+//   }
+// }
 
 export default Resume;

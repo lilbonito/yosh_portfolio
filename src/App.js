@@ -23,12 +23,13 @@ function App() {
             </Link>
 
             <Logo />
-            
+
             <Link to="/about" className="item">
               About
             </Link>
-            <Resume className="item" />
-
+            <div>
+              <Resume className="item" />
+            </div>
           </div>
           <Route exact path="/" component={Work} />
           <Route path="/contact" component={Contact} />
